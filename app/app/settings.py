@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tabelas',
+    'social',
     'user',
 ]
 
@@ -123,8 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'tabelas.User'
 LOGIN_URL = 'user/login/'

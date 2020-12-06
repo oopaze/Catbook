@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {% endblock %}
+
+
+{% block extra_css %}
+    <style>
+
+        body{
+            background-color: #1c1e21 !important;
+        }
+        
+        #profile_pic {
+            max-width:100%;
+            max-height:100%;
+            width: auto;
+            height: auto;
+            border-radius: 50% !important;
+        }
+
+        .profile_pic {
+            position: absolute;
+            left: 50%;
+        }
+
+        #pensando {
+            border-radius: 30px !important;
+        }
+
+        .btn {
+            color: white;
+            width: 50%;
+        }
+
+        .button-post {
+            font-size: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: lightgrey;
+        }
+
+        .username-edit {
+            color: white;
+        }
+
+        #id_image {
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row">
+
+        <div class="col-md-4">
+            
+        </div>
+
+        <div class="col-md-4 pt-3 pb-3">
+            <div class="card bg-dark">
+                <div class="card-body row p-3 pb-4">
+
+                    <div class="col-md-2">
+                        <img id="profile_pic" src="{% static 'user/image/profile-pic.png' %}" class="profile_pic" alt="...">
+                    </div>
+                    <div class="col-md-10">
+                        <a data-toggle="modal" data-target="#exampleModal">
+                            <input id="pensando" type="text" class="form-control bg-dark" placeholder="No que seu bixinho está pensando?">
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer">
+
+                    <div class="row">
+                        <a class="btn btn-dark col-md-6 button-post "> 
+                            <span class="mdi mdi-file-image" style="color: #5cb85c; font-size: 18px;"></span>
+                            <strong>
+                                Foto/Video
+                            </strong>
+                        </a>
+                        
+                        <a class="btn btn-dark col-md-6 button-post">
+                            <i class="mdi mdi-account" style="color: #f0ad4e ; font-size: 18px;"></i>
+                            <strong>
+                                Sentimento/Atividade
+                            </strong> 
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="col-md-4">
+            
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark ">
+                <div class="card bg-dark">
+                    <div class="card-header text-center">
+                        <h5 class="text-light">
+                            <strong style="font-family: inherit; color: white;">
+                                Criar publicação
+                            </strong>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
+                        </h5>
+                    </div>
+                    <form action="">
+                        <div class="card-body row">
+                            <div class="col-md-12 row">
+                                <div class="col-md-2">
+                                    <img id="profile_pic" src="{% static 'user/image/profile-pic.png' %}" class="text-right">
+                                </div>
+                                <div class="username-edit">
+                                    <strong>
+                                        {{ user.username }} 
+                                    </strong>
+                                    <p style="font-size: 11px;">
+                                        {{ user.username }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 pt-2">
+                                {{ form.text }}
+                            </div>
+                            <div class="col-md-12 pt-2 text-left" style="color: white;">
+                                Adicionar à sua publicação: 
+                                <label class="mdi mdi-file-image" style="color: #5cb85c; font-size: 32px;">
+                                    {{ form.image }}
+                                </label>
+                            </div>
+                            </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-info" style="width: 100%;">
+                                Publicar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+    </script>
+{% endblock %}
