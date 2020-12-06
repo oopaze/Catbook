@@ -7,6 +7,7 @@ class PublicacaoForm(forms.ModelForm):
 
         self.fields['text'].widget.attrs['class'] = 'form-control bg-dark'
         self.fields['text'].widget.attrs['placeholder'] = 'O que seu bixinho está pensando?'
+        
 
     class Meta:
         model = Publicacao

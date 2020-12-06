@@ -88,7 +88,11 @@
                         </a>
                     </div>
                 </div>
-                
+            </div>
+            <div>
+                {% for pub in publicacoes %}
+                    {{  pub.text }}
+                {% endfor %}
             </div>
         </div>
         
@@ -112,7 +116,8 @@
                             </button>
                         </h5>
                     </div>
-                    <form action="">
+                    <form action="{% url 'publicacao-create' %}" method="post">
+                        {% csrf_token %}
                         <div class="card-body row">
                             <div class="col-md-12 row">
                                 <div class="col-md-2">

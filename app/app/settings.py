@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'tabelas',
     'social',
     'user',
+    'rest_framework',
+    'api'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

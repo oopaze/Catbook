@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from tabelas.models import Publicacao
@@ -21,3 +22,16 @@ class IndexView(LoginRequiredMixin, ListView):
         context['form'] = PublicacaoForm
         return context
 
+
+class PublicacaoCreateView(LoginRequiredMixin, CreateView):
+    model = Publicacao
+    form_class = PublicacaoForm
+    success_url = reverse_lazy("home")
+
+    def get(self, *args, **kwargs):
+        super().get(*args, **kwargs)
+        return redirect(self.success_url)
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
