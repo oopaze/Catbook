@@ -1,8 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser as GenericUser
+from utils.choices import GENEROS
 
 
 class User(GenericUser):
+    data_nascimento = models.DateTimeField()
+    genero = models.CharField(
+        max_length=30,
+        choices=GENEROS,
+    )
     profile_pic = models.ImageField(upload_to='media/images', blank=True, null=True)
     
     def get_full_name(self):
